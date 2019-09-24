@@ -1,0 +1,12 @@
+{
+  "name": "elderbot",
+  "version": "0.1.0",
+  "description": "bot discord",
+  "main": "main.js",
+  "repository": "https://github.com/Neko-bot-jpg/Elderbot.git",
+  "author": "Neko-bot-jpg <coco86973@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "discordjs/discord.js"
+  }
+}
