@@ -41,46 +41,24 @@ client.on("message", message => {
   }
 });
 
-const Discord = require("discord.js");
-
-module.exports.run = (client, message, args) => {
-  let cMS = convertMS(client.uptime);
-  let uptime =
-    cMS.d +
-    " days : " +
-    cMS.h +
-    " hours : " +
-    cMS.m +
-    " minutes : " +
-    cMS.s +
-    " seconds";
-
-  const uptimeEmbed = new Discord.RichEmbed()
-    .setColor(`#f395ea`)
-    .addField(`Le bot est en ligne depuis`, `${uptime}`)
-    .setFooter(">>Footer<<");
-
-  message.channel.send(uptimeEmbed);
-  message.delete();
-};
-
-function convertMS(ms) {
-  var d, h, m, s;
-  s = Math.floor(ms / 1000);
-  m = Math.floor(s / 60);
-  s = s % 60;
-  h = Math.floor(m / 60);
-  m = m % 60;
-  d = Math.floor(h / 24);
-  h = h % 24;
-  return {
-    d: d,
-    h: h,
-    m: m,
-    s: s
-  };
-}
-
-module.exports.help = {
-  name: "uptime",
-};
+client.on("message", message => {
+  if (message.content.startsWith("$ban")) {
+    // Easy way to get member object though mentions.
+    var member = message.mentions.members.first();
+    // ban
+    member
+      .ban()
+      .then(member => {
+        // Successmessage
+        message.channel.send(
+          ":wave: " +
+            member.displayName +
+            " a été banni avec succès  :point_right: "
+        );
+      })
+      .catch(() => {
+        // Failmessage
+        message.channel.send("Accès refuser");
+      });
+  }
+});
