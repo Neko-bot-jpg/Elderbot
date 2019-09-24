@@ -10,5 +10,4 @@ client.on("message", msg => {
   if (msg.content.startsWith(`${PREFIX}ping`)) msg.channel.send("Pong ! :yum:");
 });
 
-
 client.login(TOKEN);
